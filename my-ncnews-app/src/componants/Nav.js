@@ -4,7 +4,7 @@ import { Link } from '@reach/router'
 export default class Nav extends Component {
   render () {
     return (
-      <div className='header'>
+      <div className='nav'>
         <Link className='navItem' to='/'>
           <img id='logo' src={'/media/logo-2.png'} alt='logo' />
         </Link>
