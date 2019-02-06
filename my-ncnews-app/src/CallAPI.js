@@ -20,5 +20,31 @@ export const getUsers = async () => {
 
 export const getUserById = async id => {
   const { data } = await axios.get(`${BASE_URL}/users/${id}`)
-  return data.user
+  // console.log(data.users[0])
+  return data.users[0]
+}
+export const getComments = async id => {
+  const { data } = await axios.get(`${BASE_URL}/articles/${id}/comments`)
+  // console.log(data.comments)
+  return data.comments
+}
+
+export const voteOnArticle = (voteChange, id) => {
+  return axios({
+    method: 'PATCH',
+    url: `${BASE_URL}/articles/${id}`,
+    data: {
+      inc_votes: voteChange
+    }
+  }).then(({ data: { article } }) => article)
+}
+
+export const voteOnComment = (voteChange, id, comid) => {
+  return axios({
+    method: 'PATCH',
+    url: `${BASE_URL}/articles/${id}/comments/${comid}`,
+    data: {
+      inc_votes: voteChange
+    }
+  }).then(({ data: { comment } }) => comment)
 }

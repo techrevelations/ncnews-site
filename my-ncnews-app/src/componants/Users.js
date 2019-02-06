@@ -7,7 +7,7 @@ export default class Users extends Component {
     users: []
   }
   render () {
-    const { users } = this.state
+    const { users, articles } = this.state
     return !users[0] ? (
       <p>Loading users...</p>
     ) : (
@@ -21,6 +21,7 @@ export default class Users extends Component {
                 <Link to={`/users/${user.username}`} className='AnotherItem'>
                   {user.username}
                 </Link>{' '}
+                <img id='logo' src={'https://cdn150.picsart.com/upscale-245339439045212.png?r1024x1024'} alt='logo' />
               </Fragment>
             </p>
           )

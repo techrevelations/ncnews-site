@@ -1,27 +1,50 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { getUserById } from '../CallAPI'
+import { getArticles } from '../CallAPI'
+import { Link } from '@reach/router'
 
 export default class User extends Component {
   state = {
-    user: ''
+    user: '',
+    articles: []
   }
   render () {
-    const { user } = this.state
+    const { user, articles } = this.state
     console.log(user)
     return (
       <div>
-        {/* <h2>{user[0].username}</h2> */}
-        {/* <h3>Topic: {article[0].topic}</h3>
-        <h5>{article[0].body}</h5>
+        <h2>{user.username}</h2>
+        <h3>{user.name}</h3>
+        <div>
+          <img id='logo' src={'https://cdn150.picsart.com/upscale-245339439045212.png?r1024x1024'} alt='logo' />
+        </div>
+        {console.log(user)}
         <br />
-        <h5>Author: {article[0].author}</h5>
-        <h5>{article[0].created_at}</h5>
-        <h5>Votes: {article[0].votes}</h5> */}
-        console.log(user)
+        <h3>Articles By {user.username} </h3>
+        <div>
+          {articles.map(article => {
+            console.log(article)
+            if (article.author === user.username) {
+              return (
+                <p>
+                  <Fragment key={article.article_id}>
+                    <Link to={`/articles/${article.article_id}`} className='gridItem'>
+                      {article.title}
+                    </Link>{' '}
+                  </Fragment>
+                </p>
+              )
+            }
+          })}
+        </div>
       </div>
     )
   }
   async componentDidMount () {
+    const articles = await getArticles()
+    this.setState({
+      articles: articles
+    })
     const user = await getUserById(this.props.username)
     this.setState({
       user: user

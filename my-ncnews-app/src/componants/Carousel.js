@@ -10,8 +10,18 @@ export default class Carousel extends Component {
     return (
       <div>
         <h3>Featured Articles</h3>
-        {articles.map(article => {
-          return <p>{article.title}</p>
+        {articles.map((article, index) => {
+          let randomItem = articles[Math.floor(Math.random() * articles.length)]
+          if (article === randomItem || index === articles.length - 1) {
+            return (
+              <p>
+                <h3>{randomItem.title}:</h3>
+                <h5>{randomItem.body}</h5>
+              </p>
+            )
+            // }
+            // <p>{article.body}</p>
+          }
         })}
       </div>
     )
