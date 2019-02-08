@@ -7,7 +7,7 @@ import Nav from './componants/Nav'
 import Users from './componants/Users'
 import User from './componants/User'
 import Slogan from './componants/Slogan'
-// import Auth from './componants/Auth'
+import Auth from './componants/Auth'
 import Article from './componants/Article'
 import Topics from './componants/Topics'
 import TopicArticles from './componants/TopicArticles'
@@ -17,13 +17,16 @@ class App extends Component {
   render () {
     return (
       <div className='App'>
+        <button />
         <div className='Header'>
           <Nav />
         </div>
         <div className='topright'>
           <Slogan />
         </div>
-        {/* <Auth user={user} setUser={this.setUser} /> */}
+        <div className='Auth'>
+          <Auth checkUserAndPassword={this.checkUserAndPassword} user={'ji'} setUser={this.setUser} />
+        </div>
         <div className='content'>
           <Router className='default'>
             <Home path='/' />

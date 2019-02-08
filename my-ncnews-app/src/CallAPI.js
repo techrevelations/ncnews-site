@@ -1,11 +1,10 @@
 import axios from 'axios'
-import { navigate } from '@reach/router/lib/history'
 
 const BASE_URL = 'https://nc-news-stack.herokuapp.com/api'
 
 export const getArticles = async () => {
   const { data } = await axios.get(`${BASE_URL}/articles`)
-  console.log(data.articles)
+  // console.log(data.articles)
   return data.articles
 }
 export const getArticleById = async id => {
@@ -66,7 +65,7 @@ export const sortArticles = async criteria => {
   return data.articles
 }
 
-export const removeArticle = async id => {
-  axios.delete(`${BASE_URL}/articles/${id}`)
-  return navigate('/articles')
-}
+// export const removeArticle = async id => {
+//   const { data } = await axios.delete(`${BASE_URL}/articles/${id}`)
+//   return data
+// }

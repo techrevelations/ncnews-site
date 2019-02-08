@@ -4,7 +4,6 @@ import { Link } from '@reach/router'
 import Comment from './Comment'
 import DeleteArticle from './DeleteArticle'
 import axios from 'axios'
-import { navigate } from '@reach/router/lib/history'
 
 const BASE_URL = 'https://nc-news-stack.herokuapp.com/api'
 
@@ -95,11 +94,6 @@ export default class Article extends Component {
     })
   }
 
-  //   removeArticle = async article => {
-  //     await DeleteArticle(this.props.article_id)
-  //   }.then() => {
-  //       navigate('/articles');
-  // }
   removeArticle = id => {
     axios.delete(`${BASE_URL}/articles/${id}`).then(() => {
       this.props.navigate('/articles')
