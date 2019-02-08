@@ -14,6 +14,9 @@ export default class Nav extends Component {
         <Link className='navItem' to='/users'>
           Users
         </Link>
+        <Link className='navItem' to='/topics'>
+          Topics
+        </Link>
       </div>
     )
   }

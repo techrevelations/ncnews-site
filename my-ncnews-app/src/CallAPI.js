@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { navigate } from '@reach/router/lib/history'
 
 const BASE_URL = 'https://nc-news-stack.herokuapp.com/api'
 
@@ -39,12 +40,33 @@ export const voteOnArticle = (voteChange, id) => {
   }).then(({ data: { article } }) => article)
 }
 
-export const voteOnComment = (voteChange, id, comid) => {
-  return axios({
-    method: 'PATCH',
-    url: `${BASE_URL}/articles/${id}/comments/${comid}`,
-    data: {
-      inc_votes: voteChange
-    }
-  }).then(({ data: { comment } }) => comment)
+// export const voteOnComment = (voteChange, id, comid) => {
+//   return axios({
+//     method: 'PATCH',
+//     url: `${BASE_URL}/articles/${id}/comments/${comid}`,
+//     data: {
+//       inc_votes: voteChange
+//     }
+//   }).then(({ data: { comment } }) => comment)
+// }
+
+export const getTopics = async () => {
+  const { data } = await axios.get(`${BASE_URL}/topics`)
+  console.log(data.topics)
+  return data.topics
+}
+
+export const getArticlesByTopicId = async id => {
+  const { data } = await axios.get(`${BASE_URL}/topics/${id}/articles`)
+  return data.articles
+}
+
+export const sortArticles = async criteria => {
+  const { data } = await axios.get(`${BASE_URL}/articles?sort_by=${criteria}`)
+  return data.articles
+}
+
+export const removeArticle = async id => {
+  axios.delete(`${BASE_URL}/articles/${id}`)
+  return navigate('/articles')
 }

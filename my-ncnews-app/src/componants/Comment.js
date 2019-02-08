@@ -1,19 +1,20 @@
 import React, { Component } from 'react'
-import { voteOnComment } from '../CallAPI'
+// import { voteOnComment } from '../CallAPI'
+import axios from 'axios'
 
 class Comment extends Component {
   state = {
-    comment: [],
+    comment: this.props.comment,
     voteChange: 0
   }
   render () {
-    console.log(this.props)
+    const { comment, voteChange } = this.state
     return (
       <div>
-        <p>{this.props.comment.body}</p>
-        <h5>By: {this.props.comment.author}</h5>
-        <h5>Votes: {this.props.comment.votes}</h5>
-        <button onClick={() => this.handleVoteClick(1)}>
+        <p>{comment.body}</p>
+        <h5>By: {comment.author}</h5>
+        <h5>Votes: {comment.votes + voteChange}</h5>
+        <button disabled={voteChange === 1} type='button' onClick={() => this.handleVoteClick(comment.comment_id, 1)}>
           <img
             id='logo'
             src={
@@ -22,28 +23,43 @@ class Comment extends Component {
             alt='upVote'
           />
         </button>
-        <button onClick={() => this.handleVoteClick(-1)}>
+        <button disabled={voteChange === -1} type='button' onClick={() => this.handleVoteClick(comment.comment_id, -1)}>
           <img id='logo' src={'https://openclipart.org/download/285479/Thumbs-down-Circle.svg'} alt='downVote' />
         </button>
         <br /> <br /> <br />
       </div>
     )
   }
-  handleVoteClick = voteChange => {
-    voteOnComment(voteChange, this.props.article, this.props.comment.comment_id).then(comment => {
-      console.log(comment)
-      this.setState(prevState => {
-        console.log(prevState)
-        return {
-          comment: [
-            {
-              ...this.props.comment,
-              votes: this.props.comment.votes
-            }
-          ]
-        }
+  // handleVoteClick = (comm_id, num) => {
+  //   const { article } = this.props
+  //   const add = this.props.comment.votes + num
+  //   console.log(add)
+  //   voteOnComment(num, article, comm_id).then(comment => {
+  //     console.log(add, article, comm_id)
+  //     this.setState(prevState => {
+  //       console.log(prevState, this.state.voteChange)
+  //       return {
+  //         comment: {
+  //           ...this.props.comment,
+  //           votes: add
+  //         },
+  //         voteChange: this.state.voteChange + num
+  //       }
+  //     })
+  //   })
+  // }
+
+  handleVoteClick = (comm_id, num) => {
+    const { article } = this.props
+    const add = { inc_votes: num }
+    axios
+      .patch(`https://nc-news-stack.herokuapp.com/api/articles/${article}/comments/${comm_id}`, add)
+      .then(({ data }) => {
+        this.setState({
+          voteChange: this.state.voteChange + num
+        })
       })
-    })
   }
 }
+
 export default Comment

@@ -2,22 +2,33 @@ import React, { Component, Fragment } from 'react'
 import { getArticleById, getComments, voteOnArticle } from '../CallAPI'
 import { Link } from '@reach/router'
 import Comment from './Comment'
+import DeleteArticle from './DeleteArticle'
+import axios from 'axios'
+import { navigate } from '@reach/router/lib/history'
+
+const BASE_URL = 'https://nc-news-stack.herokuapp.com/api'
 
 export default class Article extends Component {
   state = {
     article: [],
     comments: [],
-    voteChange: 0
+    voteChange: 0,
+    hasError: false
   }
   render () {
-    const { article, comments, voteChange } = this.state
-    // console.log(comments)
+    const { article, comments, voteChange, hasError } = this.state
+    if (hasError === true) {
+      return <p>Something went wrong</p>
+    }
     return !article[0] ? (
       <p>Loading articles...</p>
     ) : (
       <div>
         <h2>{article[0].title}</h2>
-        <h3>Topic: {article[0].topic}</h3>
+        <Fragment key={article[0].topic}>
+          <Link to={`/topics/${article[0].topic}/articles`}>{article[0].topic}</Link>
+        </Fragment>
+
         <h3>{article[0].body}</h3>
         <br />
         <Fragment key={article[0].author}>
@@ -25,6 +36,9 @@ export default class Article extends Component {
         </Fragment>
 
         <h5>{article[0].created_at}</h5>
+        <div>
+          <DeleteArticle article_id={this.props.article_id} removeArticle={this.removeArticle} />
+        </div>
         <h5>Votes: {article[0].votes}</h5>
         <button onClick={() => this.handleVoteClick(1)}>
           <img
@@ -74,6 +88,21 @@ export default class Article extends Component {
     const comments = await getComments(this.props.article_id, this.state.comment_id)
     this.setState({
       comments: comments
+      // }).catch(err => {
+      //   this.setState({
+      //     hasError: true
+      //   })
+    })
+  }
+
+  //   removeArticle = async article => {
+  //     await DeleteArticle(this.props.article_id)
+  //   }.then() => {
+  //       navigate('/articles');
+  // }
+  removeArticle = id => {
+    axios.delete(`${BASE_URL}/articles/${id}`).then(() => {
+      this.props.navigate('/articles')
     })
   }
 }

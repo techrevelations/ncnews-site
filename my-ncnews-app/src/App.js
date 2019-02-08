@@ -9,14 +9,21 @@ import User from './componants/User'
 import Slogan from './componants/Slogan'
 // import Auth from './componants/Auth'
 import Article from './componants/Article'
+import Topics from './componants/Topics'
+import TopicArticles from './componants/TopicArticles'
+import NotFound from './NotFound'
 
 class App extends Component {
   render () {
     return (
       <div className='App'>
         <div className='Header'>
-          <Nav /> <Slogan />
+          <Nav />
         </div>
+        <div className='topright'>
+          <Slogan />
+        </div>
+        {/* <Auth user={user} setUser={this.setUser} /> */}
         <div className='content'>
           <Router className='default'>
             <Home path='/' />
@@ -24,6 +31,9 @@ class App extends Component {
             <Article path='/articles/:article_id' />
             <Users path='/users' />
             <User path='/users/:username' />
+            <Topics path='/topics' />
+            <TopicArticles path='topics/:slug/articles' />
+            <NotFound default />
           </Router>
         </div>
       </div>

@@ -7,7 +7,7 @@ export default class Users extends Component {
     users: []
   }
   render () {
-    const { users, articles } = this.state
+    const { users } = this.state
     return !users[0] ? (
       <p>Loading users...</p>
     ) : (
