@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-// import { checkCredentials } from "../";
-//import User from './User';
+
 //const BASE_URL = 'https://nc-news-stack.herokuapp.com/api';
 export default class Auth extends Component {
 	state = {
@@ -17,6 +16,7 @@ export default class Auth extends Component {
 					<button id="signin" onClick={this.handleLogOut}>
 						LogOut
 					</button>
+					{/* {<div className="body">{this.props.children}</div>} */}
 				</div>
 			);
 		else {

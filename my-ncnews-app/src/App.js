@@ -11,6 +11,7 @@ import Auth from './components/Auth';
 import Article from './components/Article';
 import Topics from './components/Topics';
 import TopicArticles from './components/TopicArticles';
+import Carousel from './components/Carousel';
 import NotFound from './NotFound';
 import * as api from './CallAPI';
 
@@ -32,13 +33,14 @@ class App extends Component {
 						clearUser={this.clearUser}
 					/>
 				</div>
+				<Carousel />
 				<Router className="default">
 					<Home path="/" />
-					<Articles path="/articles" />
+					<Articles path="/articles" user={this.state.user} />
 					<Article path="/articles/:article_id" />
-					<Users path="/users" />
+					<Users path="/users" user={this.state.user} />
 					<User path="/users/:username" />
-					<Topics path="/topics" />
+					<Topics path="/topics" user={this.state.user} />
 					<TopicArticles path="topics/:slug/articles" />
 					<NotFound default />
 				</Router>

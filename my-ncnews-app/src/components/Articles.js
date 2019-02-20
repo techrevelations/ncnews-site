@@ -9,8 +9,12 @@ export default class Articles extends Component {
 	};
 	render() {
 		const {articles} = this.state;
-		return !articles[0] ? (
-			<p>Loading articles...</p>
+		const {user} = this.props;
+		return !articles[0] || !user ? (
+			<div>
+				<p>Loading articles...</p>
+				<p>You must be logged in to view articles</p>
+			</div>
 		) : (
 			<div>
 				<h1>Articles</h1>

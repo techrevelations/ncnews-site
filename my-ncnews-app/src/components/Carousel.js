@@ -25,7 +25,7 @@ export default class Carousel extends Component {
 
 						return (
 							<div className="slides" id={count}>
-								<h3>Featured Articles</h3>
+								<h3>Featured Article</h3>
 								<h3>{randomItem.title}:</h3>
 								<h5>{randomItem.body}</h5>
 							</div>
