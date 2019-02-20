@@ -14,6 +14,7 @@ import TopicArticles from './components/TopicArticles';
 import Carousel from './components/Carousel';
 import NotFound from './NotFound';
 import * as api from './CallAPI';
+import Footer from './components/Footer';
 
 class App extends Component {
 	state = {
@@ -44,6 +45,7 @@ class App extends Component {
 					<TopicArticles path="topics/:slug/articles" />
 					<NotFound default />
 				</Router>
+				<Footer />
 			</div>
 		);
 	}

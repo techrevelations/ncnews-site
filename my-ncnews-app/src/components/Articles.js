@@ -16,25 +16,48 @@ export default class Articles extends Component {
 				<p>You must be logged in to view articles</p>
 			</div>
 		) : (
-			<div>
-				<h1>Articles</h1>
-				<h1>King Luke</h1>
-				<Card getArticlesByCatagory={this.getArticlesByCatagory} />
+			<div className="Articles">
+				<h1 className="ArtTitle">Articles</h1>
+				<Card className="Cats" getArticlesByCatagory={this.getArticlesByCatagory} />
 
 				{/* <h2 className='gridItem'>Article</h2> */}
-				{articles.map(article => {
-					return (
-						<p>
-							<Fragment key={article.article_id}>
-								<Link to={`/articles/${article.article_id}`} className="gridItem">
-									{article.title}
-								</Link>{' '}
-							</Fragment>
-							<h4>{article.author}</h4>
-							<h5>{article.created_at}</h5>
-						</p>
-					);
-				})}
+				<div className="articleList">
+					{articles.map(article => {
+						const year = article.created_at.substring(0, 4);
+						const month = article.created_at.substring(5, 7);
+						const monthInitial = {
+							'01': 'jan',
+							'02': 'feb',
+							'03': 'mar',
+							'04': 'apr',
+							'05': 'may',
+							'06': 'jun',
+							'07': 'jul',
+							'08': 'aug',
+							'09': 'sep',
+							'10': 'oct',
+							'11': 'nov',
+							'12': 'dec'
+						};
+						const day = article.created_at.substring(8, 10);
+						return (
+							<div className="articleCard">
+								<Fragment key={article.article_id}>
+									<Link to={`/articles/${article.article_id}`} className="gridItem">
+										{article.title}
+									</Link>{' '}
+								</Fragment>
+								<h5 className="ArtBody"> {article.body.substring(0, 250) + '...'}</h5>
+								<h4 className="ArtAuthor">{article.author}</h4>
+								<div className="ArtTime">
+									<span className="day">{day}</span>
+									<span className="month">{monthInitial[month]}</span>
+									<span class="year">{year}</span>
+								</div>
+							</div>
+						);
+					})}
+				</div>
 			</div>
 		);
 	}
