@@ -17,7 +17,7 @@ export default class User extends Component {
 				<div className="SingleName">{user.name}</div>
 				<div className="singlePic">
 					<img
-						id="Userlogo"
+						id="Userlogos"
 						src={'https://cdn150.picsart.com/upscale-245339439045212.png?r1024x1024'}
 						alt="logo"
 					/>

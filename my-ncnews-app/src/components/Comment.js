@@ -15,12 +15,13 @@ class Comment extends Component {
 				<h5>By: {comment.author}</h5>
 				<h5>Votes: {comment.votes + voteChange}</h5>
 				<button
+					className="Commentlogo"
 					disabled={this.state.voteChange === 1}
 					type="button"
 					onClick={() => this.handleVoteClick(comment.comment_id, 1)}
 				>
 					<img
-						id="logo"
+						id="Commentlogo"
 						src={
 							'http://uploads.friendsresilience.org/wp-content/uploads/2017/01/23002444/Paula-Barrett-Thumbs-Up-Actions.jpg'
 						}
@@ -28,17 +29,18 @@ class Comment extends Component {
 					/>
 				</button>
 				<button
+					className="Commentlogo"
 					disabled={this.state.voteChange === -1}
 					type="button"
 					onClick={() => this.handleVoteClick(comment.comment_id, -1)}
 				>
 					<img
-						id="logo"
+						id="Commentlogo"
 						src={'https://openclipart.org/download/285479/Thumbs-down-Circle.svg'}
 						alt="downVote"
 					/>
 				</button>
-				<br /> <br /> <br />
+				<br />
 			</div>
 		);
 	}
