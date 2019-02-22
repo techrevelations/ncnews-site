@@ -96,25 +96,36 @@
 	font-size: 1.5rem;
 	/* 	white-space: nowrap; */
 	display: grid;
-	grid-template-columns: 30% 35% 35%;
+	grid-template-columns: 33% 34% 34%;
 	grid-template-rows: 100%;
 	grid-template-areas: "VotesCount Greenlogo Redlogo";
 	grid-gap: 10px;
 	justify-content: center;
+	margin-left: 1em;
 }
 .VotesCount {
 	grid-area: VotesCount;
 	margin-top: 0;
 	/* margin-left: 1em; */
 	font-size: 1.5rem;
-	/* border: 1px solid; */
-	border-radius: 5px;
+	background-color: lightskyblue;
+	border-radius: 50%;
+	text-align: center;
+	width: 33px;
+	height: 33px;
 }
 .Greenlogo {
 	grid-area: Greenlogo;
+	background-color: transparent;
+	border: none;
+	margin-bottom: -8px;
 }
 .Redlogo {
 	grid-area: Redlogo;
+	background-color: transparent;
+	border: none;
+	margin-bottom: -8px;
+	margin-right: -25px;
 }
 
 .ArticleTopic {
@@ -419,6 +430,48 @@
 }
 #Userlogo {
 	width: 100px;
+}
+
+.SingleUser {
+	grid-area: main;
+	margin-left: 2em;
+	margin-right: 2em;
+	border: 1px solid;
+	justify-content: center;
+	height: 600px;
+	display: grid;
+	grid-template-rows: 10% 10% 40% 10% 30%;
+	grid-template-areas: "SingleUserName" "SingleName" "SinglePic" "SingleArtTitle" "SingleArticles";
+}
+.SingleUserName {
+	grid-area: SingleUserName;
+	justify-content: center;
+	display: flex;
+	flex: stretch;
+}
+
+.SingleName {
+	grid-area: SingleName;
+	display: flex;
+	flex: stretch;
+	justify-content: center;
+}
+
+.SinglePic {
+	grid-area: SinglePic;
+	align-items: center;
+	margin: auto;
+	width: 50%;
+}
+
+.SingleArtTitle {
+	grid-area: SingleArtTitle;
+	display: flex;
+	flex: stretch;
+	justify-content: center;
+}
+.SingleArticles {
+	grid-area: SingleArticles;
 }
 
 .footer {

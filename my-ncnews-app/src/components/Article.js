@@ -41,7 +41,7 @@ export default class Article extends Component {
 					</div>
 				)}
 				<div className="ArticleVotes">
-					<h5 className="VotesCount">{article[0].votes}</h5>
+					<div className="VotesCount">{article[0].votes}</div>
 					<button
 						disabled={this.state.voteChange === 1}
 						className="Greenlogo"

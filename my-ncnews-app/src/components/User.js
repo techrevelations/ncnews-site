@@ -12,20 +12,18 @@ export default class User extends Component {
 		const {user, articles} = this.state;
 		console.log(user);
 		return (
-			<div>
-				<h2>{user.username}</h2>
-				<h3>{user.name}</h3>
-				<div>
+			<div className="SingleUser">
+				<div className="SingleUserName">{user.username}</div>
+				<div className="SingleName">{user.name}</div>
+				<div className="singlePic">
 					<img
-						id="logo"
+						id="Userlogo"
 						src={'https://cdn150.picsart.com/upscale-245339439045212.png?r1024x1024'}
 						alt="logo"
 					/>
 				</div>
-				{console.log(user)}
-				<br />
-				<h3>Articles By {user.username} </h3>
-				<div>
+				<div className="SingleArtTitle">Articles By {user.username} </div>
+				<div className="SingleArticles">
 					{articles.map(article => {
 						console.log(article);
 						if (article.author === user.username) {
