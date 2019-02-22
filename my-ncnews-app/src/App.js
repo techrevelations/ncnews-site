@@ -38,7 +38,7 @@ class App extends Component {
 				<Router className="default">
 					<Home path="/" />
 					<Articles path="/articles" user={this.state.user} />
-					<Article path="/articles/:article_id" />
+					<Article path="/articles/:article_id" user={this.state.user} />
 					<Users path="/users" user={this.state.user} />
 					<User path="/users/:username" />
 					<Topics path="/topics" user={this.state.user} />

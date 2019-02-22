@@ -15,25 +15,27 @@ export default class Users extends Component {
 				<p>You must be logged in to view users</p>
 			</div>
 		) : (
-			<div>
-				<h1>Users</h1>
+			<div className="Users">
+				<h1 className="UsersTitle">Users</h1>
 				{/* <h2 className='gridItem'>Article</h2> */}
-				{users.map(user => {
-					return (
-						<p>
-							<Fragment key={user.username}>
-								<Link to={`/users/${user.username}`} className="AnotherItem">
+				<div className="UserList">
+					{users.map(user => {
+						return (
+							<div className="UserCard" key={user.username}>
+								<Link to={`/users/${user.username}`} className="UserName">
 									{user.username}
 								</Link>{' '}
-								<img
-									id="logo"
-									src={'https://cdn150.picsart.com/upscale-245339439045212.png?r1024x1024'}
-									alt="logo"
-								/>
-							</Fragment>
-						</p>
-					);
-				})}
+								<div className="UserPic">
+									<img
+										id="logo"
+										src={'https://cdn150.picsart.com/upscale-245339439045212.png?r1024x1024'}
+										alt="logo"
+									/>
+								</div>
+							</div>
+						);
+					})}
+				</div>
 			</div>
 		);
 	}

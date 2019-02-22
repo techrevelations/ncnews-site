@@ -31,7 +31,7 @@ export default class Card extends Component {
 	render() {
 		return (
 			<div>
-				<button id="signin" onClick={this.showMenu}>
+				<button id="sortBy" onClick={this.showMenu}>
 					Sort By
 				</button>
 
@@ -42,17 +42,17 @@ export default class Card extends Component {
 							this.dropdownMenu = element;
 						}}
 					>
-						<button id="signin" onClick={() => this.props.getArticlesByCatagory('created_at')}>
+						<button id="sortBy" onClick={() => this.props.getArticlesByCatagory('created_at')}>
 							{' '}
-							Most Recent{' '}
+							Recent{' '}
 						</button>
-						<button id="signin" onClick={() => this.props.getArticlesByCatagory('comment_count')}>
+						<button id="sortBy" onClick={() => this.props.getArticlesByCatagory('comment_count')}>
 							{' '}
-							Most Comments{' '}
+							Comments{' '}
 						</button>
-						<button id="signin" onClick={() => this.props.getArticlesByCatagory('created_at')}>
+						<button id="sortBy" onClick={() => this.props.getArticlesByCatagory('votes')}>
 							{' '}
-							Most Votes{' '}
+							Votes{' '}
 						</button>
 					</div>
 				) : null}

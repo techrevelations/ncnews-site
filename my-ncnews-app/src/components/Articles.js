@@ -2,10 +2,12 @@ import React, {Component, Fragment} from 'react';
 import {getArticles, sortArticles} from '../CallAPI';
 import {Link} from '@reach/router';
 import Card from './Card';
+import throttel from 'lodash';
 
 export default class Articles extends Component {
 	state = {
-		articles: []
+		articles: [],
+		page: 1
 	};
 	render() {
 		const {articles} = this.state;
@@ -48,7 +50,13 @@ export default class Articles extends Component {
 									</Link>{' '}
 								</Fragment>
 								<h5 className="ArtBody"> {article.body.substring(0, 250) + '...'}</h5>
-								<h4 className="ArtAuthor">{article.author}</h4>
+								<div className="ArtAuthor">
+									<img
+										id="logo"
+										src={'https://cdn150.picsart.com/upscale-245339439045212.png?r1024x1024'}
+										alt="logo"
+									/>
+								</div>
 								<div className="ArtTime">
 									<span className="day">{day}</span>
 									<span className="month">{monthInitial[month]}</span>
@@ -64,12 +72,23 @@ export default class Articles extends Component {
 
 	async componentDidMount() {
 		const articles = await getArticles();
+		// this.addScrollEventListener();
 		this.setState({
 			articles: articles
 		});
 	}
 
+	addScrollEventListener = () => {
+		document.querySelector('.Articles').addEventListener('scroll', this.handleScroll);
+	};
+
+	handleScroll = throttel(event => {
+		const {clientHeight, scrollTop, scrollHeight} = event.target;
+		const distanceFromBottom = scrollHeight + scrollTop;
+	}, 1000);
+
 	getArticlesByCatagory = async criteria => {
+		const {page} = this.state;
 		const articles = await sortArticles(criteria);
 		// console.log(articles)
 		this.setState({
