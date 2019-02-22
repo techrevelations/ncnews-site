@@ -52,7 +52,7 @@ export default class Articles extends Component {
 								<h5 className="ArtBody"> {article.body.substring(0, 250) + '...'}</h5>
 								<div className="ArtAuthor">
 									<img
-										id="logo"
+										id="Artlogo"
 										src={'https://cdn150.picsart.com/upscale-245339439045212.png?r1024x1024'}
 										alt="logo"
 									/>
@@ -82,13 +82,13 @@ export default class Articles extends Component {
 		document.querySelector('.Articles').addEventListener('scroll', this.handleScroll);
 	};
 
-	handleScroll = throttel(event => {
-		const {clientHeight, scrollTop, scrollHeight} = event.target;
-		const distanceFromBottom = scrollHeight + scrollTop;
-	}, 1000);
+	// handleScroll = throttel(event => {
+	// 	const {clientHeight, scrollTop, scrollHeight} = event.target;
+	// 	const distanceFromBottom = scrollHeight + scrollTop;
+	// }, 1000);
 
 	getArticlesByCatagory = async criteria => {
-		const {page} = this.state;
+		const {} = this.state;
 		const articles = await sortArticles(criteria);
 		// console.log(articles)
 		this.setState({

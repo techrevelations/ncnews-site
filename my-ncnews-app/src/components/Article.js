@@ -41,8 +41,12 @@ export default class Article extends Component {
 					</div>
 				)}
 				<div className="ArticleVotes">
-					<h5 className="VotesCount">Votes: {article[0].votes}</h5>
-					<button className="Greenlogo" onClick={() => this.handleVoteClick(1)}>
+					<h5 className="VotesCount">{article[0].votes}</h5>
+					<button
+						disabled={this.state.voteChange === 1}
+						className="Greenlogo"
+						onClick={() => this.handleVoteClick(1)}
+					>
 						<img
 							id="logo"
 							src={
@@ -51,7 +55,11 @@ export default class Article extends Component {
 							alt="upVote"
 						/>
 					</button>
-					<button className="Redlogo" onClick={() => this.handleVoteClick(-1)}>
+					<button
+						disabled={this.state.voteChange === -1}
+						className="Redlogo"
+						onClick={() => this.handleVoteClick(-1)}
+					>
 						<img
 							id="logo"
 							src={'https://openclipart.org/download/285479/Thumbs-down-Circle.svg'}
@@ -73,8 +81,10 @@ export default class Article extends Component {
 			</div>
 		);
 	}
-	handleVoteClick = voteChange => {
-		voteOnArticle(voteChange, this.props.article_id).then(article => {
+	handleVoteClick = voteInc => {
+		const voteCheck = this.state.voteChange + voteInc;
+		this.setState({voteChange: voteCheck});
+		voteOnArticle(voteInc, this.props.article_id).then(article => {
 			console.log(article);
 			this.setState(prevState => {
 				return {
@@ -84,6 +94,7 @@ export default class Article extends Component {
 							votes: article[0].votes
 						}
 					]
+					//voteChange
 				};
 			});
 		});

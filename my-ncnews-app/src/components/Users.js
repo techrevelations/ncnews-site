@@ -16,7 +16,7 @@ export default class Users extends Component {
 			</div>
 		) : (
 			<div className="Users">
-				<h1 className="UsersTitle">Users</h1>
+				<div className="UsersTitle">Search Users</div>
 				{/* <h2 className='gridItem'>Article</h2> */}
 				<div className="UserList">
 					{users.map(user => {
@@ -27,7 +27,7 @@ export default class Users extends Component {
 								</Link>{' '}
 								<div className="UserPic">
 									<img
-										id="logo"
+										id="Userlogo"
 										src={'https://cdn150.picsart.com/upscale-245339439045212.png?r1024x1024'}
 										alt="logo"
 									/>
