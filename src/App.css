@@ -1,30 +1,58 @@
-.app-body {
-	background-image: url('/media/background.png');
-	background-repeat: no-repeat;
-}
-
 .App {
 	display: grid;
-	grid-template-columns: 10em 20% 20% 30%;
-	grid-template-rows: 5em 20em 21em 5em;
+	grid-template-columns: 10% 40% 40% 10%;
+	grid-template-rows: 10% 10% 50% 30%;
 	font-family: 'Maven Pro', sans-serif;
-	height: 100vh;
-	grid-template-areas: "header header header header" "sideBar main main main" "underSlide main main main"
-		"footer footer footer footer ";
+	background-image: url('/media/background-fullwidth.png');
+	/* background-repeat: no-repeat; */
+	background-size: 100%;
+	height: 800px;
+	background-repeat: repeat-y;
+	transition: 250ms;
+	overflow-x: hidden;
+	grid-template-areas: "header header header header" "sideBar sideBar sideBar sideBar" "main main main main"
+		"main main main main ";
+}
+@media (max-width: 1200px) {
+	.App {
+		font-family: 'Maven Pro', sans-serif;
+		background-image: url('/media/background_mobile.png');
+		background-repeat: repeat-y;
+		background-size: 100%;
+		height: 800px;
+		transition: 250ms;
+		margin-right: -1em;
+		margin-left: -1em;
+	}
+}
+
+@media (max-width: 900px) {
+	.App {
+		background-image: url('/media/background_micro.png');
+		background-repeat: repeat-y;
+		transition: 250ms;
+		margin-right: -1em;
+		margin-left: -1em;
+	}
 }
 
 .default {
 	grid-area: main;
-	/* padding-left: 2em;
-	
 	display: flex;
 	justify-content: space-around;
-	align-items: center; */
 }
+
+/* @media (max-width: 1000px) {
+	.default {
+		background-image: url('/media/Mobile_Background.png');
+		background-repeat: no-repeat;
+		background-size: 100%;
+	}
+} */
 
 .Article {
 	grid-area: main;
-	padding-left: 1.2em;
+	padding-left: 0.5em;
 	height: 600px;
 	display: grid;
 	grid-template-columns: 80% 20%;
@@ -69,14 +97,14 @@
 	display: flex;
 	justify-content: space-around;
 	overflow-y: auto;
-	margin-left: 0.8em;
-	margin-right: 3.5em;
+	margin-left: 0.5em;
+	margin-right: 0.5em;
 	border: 1px solid;
 	border-top-color: green;
 	border-radius: 5px;
 	background-color: antiquewhite;
-	padding-left: 1em;
-	padding-right: 1em;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
 }
 /* @media (max-width: 1000px) {
 	.ArticleBody {
@@ -147,10 +175,10 @@
 
 .ArticleComments {
 	grid-area: ArticleComments;
-	overflow-y: auto;
-	height: 205px;
+	/* overflow-y: auto;
+	height: 205px; */
 	margin-left: 1em;
-	margin-right: 4em;
+	margin-right: 1em;
 	font-size: 1rem;
 }
 
@@ -166,7 +194,7 @@
 .Articles {
 	grid-area: main;
 	padding-left: 1.2em;
-
+	padding-right: 1.2em;
 	height: 600px;
 	display: grid;
 	grid-template-columns: 80% 20%;
@@ -178,26 +206,27 @@
 .articleList {
 	grid-area: articleList;
 	overflow-y: auto;
+	/* grid-gap: 10em; */
 }
 
 .articleCard {
 	background-color: antiquewhite;
 	display: grid;
-	grid-template-columns: 90% 10%;
+	grid-template-columns: 10% 90%;
 	grid-template-rows: 20% 80%;
-	grid-gap: 5px;
 	border: 1px solid;
 	justify-content: center;
-	grid-template-areas: "gridItem ArtAuthor" "ArtBody ArtTime";
+	grid-template-areas: "ArtAuthor gridItem" "ArtTime ArtBody";
 	font-size: 1.5rem;
-	margin: 1rem auto;
 	border-radius: 5px;
-	padding-left: 1.5em;
-	padding-right: 1.5em;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	margin-bottom: 10px;
 }
 .gridItem {
 	grid-area: gridItem;
 	text-align: center;
+	padding-left: 2em;
 }
 .Cats {
 	grid-area: Cats;
@@ -212,15 +241,30 @@
 }
 .ArtAuthor {
 	grid-area: ArtAuthor;
+	/* display: flex;
+	align-items: center;
+	justify-content: center; */
+	/* margin-left: 1.5em; */
+	/* margin-top: 1.5em; */
 }
+
+@media (max-width: 1000px) {
+	#Artlogo {
+		height: 1em;
+	}
+}
+
 .ArtBody {
 	grid-area: ArtBody;
+	padding-left: 2em;
+	padding-top: 2em;
 }
 @import 'https://fonts.googleapis.com/css?family=Maven+Pro';
 
 .month,
 .day,
 .year {
+	margin-right: 1.5em;
 	position: absolute;
 }
 
@@ -332,7 +376,6 @@
 	font-size: 1rem;
 	grid-area: underSlide;
 	width: 100%;
-	height: 325px;
 	display: flex;
 	overflow-x: auto;
 	scroll-behavior: smooth;
@@ -504,15 +547,12 @@
 .footer {
 	background-color: darkgray;
 	grid-area: footer;
-	width: 960px;
-	height: 40px;
 	display: flex;
 	font-size: 1rem;
 	justify-content: stretch;
 	align-items: center;
 	text-align: center;
 	flex-grow: 1;
-	padding-left: 1.6em;
 	border: 1px solid;
 	margin-left: 0.3em;
 	margin-top: 0.2em;
