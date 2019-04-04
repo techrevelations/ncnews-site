@@ -35,6 +35,9 @@ Reach/Router - Accessible React routing
 Jest - JS testing framework
 Foundation Icon Fonts - Icon pack for HTML/CSS
 
+Login
+To login input username 'jessjelly' and password 'pass'
+
 Authors
 Christopher Smith - github.com/techrevelations
 
