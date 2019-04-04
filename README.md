@@ -1,68 +1,37 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+NC News
+NC News is a front-end React App serving user-generated news articles on a selection of topics.
 
-In the project directory, you can run:
+Deployed project
+https://readallaboutit.netlify.com/
 
-### `npm start`
+Back-end repo
+https://github.com/techrevelations/nc-news
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Getting Started
+To run this app on your local machine, follow these steps:
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Fork this repo
+Clone the repo by running the terminal command git clone https://github.com/<your-username>/nc-news-site
+Run the command npm install to install all dependencies
+You can now start the app with the command npm start, which should open the app in your browser. If it doesn't open automatically, navigate to 'localhost:3000'
+Deployment
+This app has been deployed on Netlify. To deploy your own version, follow these instructions.
 
-### `npm test`
+To allow netflify to handle redirects, create a _redirects file in the public folder of your repo with a single line: /* /index.html 200
+Sign up to Netlify
+Select the option to link with your GitHub account.
+Select the option to continually deploy with GitHub.
+In the 'Repository access' configuration box, select this repository.
+On the build options tab, verify the default settings, then click 'Deploy Site'
+Built With
+[React] - JS library for building user interfaces
+Axios - Promise-based http client
+Reach/Router - Accessible React routing
+Jest - JS testing framework
+Foundation Icon Fonts - Icon pack for HTML/CSS
+Authors
+Christopher Smith - github.com/techrevelations
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Acknowledgments
+A big thank you to Northcoders!
